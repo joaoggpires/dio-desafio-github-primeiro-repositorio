@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Finanças</title>
+    <link rel="stylesheet" href="inicialCSS.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+    <header>
+        <h1>Bem Vindo</h1>
+        <p>Data: <span>12/12/2025</span></p>
+    </header>
+
+    <main>
+        <div class="balance-info">
+            <p>Saldo Atual: <span id="currentBalance" class="positive">R$ 2.567,91</span></p>
+            <p>Despesas: <span id="expenses" class="negative">R$ -1.230,31</span></p>
+        </div>
+
+        <div class="buttons">
+            <button class="action-button" id="openModalButton">
+                <i class="bi bi-wallet-fill"></i>
+                <span>Adicionar/subtrair</span>
+            </button>
+            <button class="action-button" id="despesaBtn">
+                <i class="bi bi-cash-stack"></i>
+                <span>Despesas</span>
+            </button>
+            <button class="action-button" id="metasBtn">
+                <i class="bi bi-piggy-bank-fill"></i>
+                <span>Metas</span>
+            </button>
+            <button class="action-button" id="relatorioBtn">
+                <i class="bi bi-graph-up-arrow"></i>
+                <span>Relatório</span>
+            </button>
+        </div>
+
+        <!-- Modal para Adicionar/Subtrair -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Adicionar ou Subtrair</h2>
+                <form id="transactionForm">
+                    <label for="amount">Valor:</label>
+                    <input type="number" id="amount" required>
+                    <label for="transactionType">Tipo:</label>
+                    <select id="transactionType">
+                        <option value="add">Adicionar (Receita)</option>
+                        <option value="subtract">Subtrair (Despesa)</option>
+                    </select>
+                    <button type="submit">Confirmar</button>
+                </form>
+            </div>
+        </div>
+        <div id="metasModal" class="modal" style="display: none;"> <!-- Modal começa oculto -->
+            <div class="modal-content">
+                <span class="close" id="closeMetasModal">&times;</span>
+                <h2>Criar Meta Financeira</h2>
+                <form id="formMeta">
+                    <label for="metaNome">Nome da Meta</label>
+                    <input type="text" id="metaNome" required>
+                    <label for="metaValor">Valor da Meta</label>
+                    <input type="number" id="metaValor" required>
+                    <button type="submit">Criar Meta</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 MyFinance: Todos os direitos reservados</p>
+    </footer>
+
+    <script src="inicialJS.js"></script>
+</body>
+</html>

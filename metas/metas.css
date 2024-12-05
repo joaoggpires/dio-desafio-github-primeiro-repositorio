@@ -1,0 +1,165 @@
+/* Estilo global */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column; /* Torna o body um contêiner flex */
+  min-height: 100vh; /* Garante que o body ocupe toda a altura da janela */
+  justify-content: center; /* Alinha o conteúdo na vertical */
+  align-items: center; /* Alinha o conteúdo na horizontal */
+  overflow: hidden;
+}
+
+/* Cabeçalho */
+.header-metas {
+  background-color: #4caf50; /* Cor de fundo verde */
+  color: white; /* Cor do texto em branco */
+  display: flex;
+  flex-direction: column; /* Organiza o título e a data em uma coluna */
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+  justify-content: center; /* Centraliza o conteúdo verticalmente */
+  padding: 20px 0; /* Espaçamento interno do cabeçalho */
+  text-align: center; /* Centraliza o texto dentro dos itens */
+  width: 100%; /* Garante que o cabeçalho ocupe toda a largura */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para dar efeito de profundidade */
+  position: relative;
+}
+
+/* Estilo do contêiner do cabeçalho de metas */
+.header-metas {
+  display: flex;
+  flex-direction: column; /* Organiza os itens verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  height: 40px; /* Define uma altura para o contêiner */
+  text-align: center; /* Centraliza o texto */
+  padding: 20px;
+}
+
+/* Estilo para o título "Suas Metas" */
+.header-metas h1 {
+  font-size: 28px; /* Tamanho maior para o título */
+  margin: 0; /* Remove a margem padrão */
+  padding: 0;
+  font-weight: bold; /* Título em negrito */
+}
+
+/* Estilo para a data */
+.header-metas span {
+  font-size: 18px; /* Tamanho de fonte menor para a data */
+  color: #f1f1f1; /* Cor mais clara para a data */
+  margin-top: 10px; /* Espaçamento entre o título e a data */
+}
+
+/* Bordas ou separação opcional entre o header e o resto da página */
+.header-metas::after {
+  content: ""; /* Cria um elemento vazio */
+  position: absolute;
+  bottom: 0; /* Posiciona a borda no fundo do cabeçalho */
+  left: 0;
+  width: 100%;
+  height: 2px; /* Altura da linha separadora */
+  background-color: #3e8e41; /* Cor de borda mais escura */
+}
+
+/* Estilo para a seção Suas Metas */
+/* Estilo para a seção Suas Metas */
+.suas-metas {
+    display: flex; /* Ativa o Flexbox para alinhar os itens na mesma linha */
+    justify-content: space-between; /* Cria espaço entre o título e a data */
+    align-items: center; /* Alinha verticalmente o conteúdo no centro */
+    padding: 20px; /* Espaçamento interno */
+    background-color: #f4f4f4; /* Cor de fundo suave para a seção */
+    border-radius: 10px; /* Borda arredondada */
+    margin-bottom: 20px; /* Espaçamento abaixo da seção */
+  }
+  
+  /* Estilo para o título "Suas Metas" */
+  .suas-metas h2 {
+    font-size: 24px; /* Tamanho maior para o título */
+    color: #333; /* Cor do título */
+    margin: 0; /* Remove a margem padrão */
+  }
+  
+  /* Estilo para a data */
+  .suas-metas .data {
+    font-size: 18px; /* Tamanho da fonte para a data */
+    color: #666; /* Cor mais clara para a data */
+  }
+
+/* Conteúdo principal */
+.main-content {
+  display: flex; /* Ativa o Flexbox */
+  justify-content: center; /* Centraliza os cards horizontalmente */
+  align-items: center; /* Centraliza os cards verticalmente */
+  gap: 20px; /* Espaçamento entre os cards */
+  flex-wrap: wrap; /* Permite quebra de linha se necessário */
+  padding: 20px;
+  max-width: 900px; /* Define largura máxima para os cards */
+  flex: 1; /* Faz o conteúdo expandir e ocupar o espaço disponível */
+}
+
+/* Estilo dos cards */
+.goal-card {
+  background-color: #e0e0e0;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px; /* Largura fixa para garantir o mesmo tamanho */
+  height: 300px; /* Altura fixa para garantir que ambos os cards tenham o mesmo tamanho */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+  border: 1px solid black; /* Adiciona borda preta de 1px */
+  transition: transform 0.3s ease; /* Suaviza a transição */
+}
+
+.goal-card:hover {
+  transform: translateY(
+    -5px
+  ); /* Faz o card subir ligeiramente ao passar o mouse */
+}
+
+/* Botão dentro dos cards */
+.goal-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.goal-button:hover {
+  background-color: #45a049;
+}
+
+/* Botão de nova meta */
+.button-container {
+  text-align: center; /* Centraliza o botão dentro do contêiner */
+  margin: 20px 0; /* Adiciona espaçamento acima e abaixo do botão */
+}
+
+.new-goal-button {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.new-goal-button:hover {
+  background-color: #1e88e5;
+}
+
+/* Rodapé */
+.footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  width: 100%; /* Garante que o footer ocupe toda a largura da página */
+  position: absolute; /* Faz com que o footer fique fixo no final */
+  bottom: 0; /* Fixa o footer na parte inferior */
+}
