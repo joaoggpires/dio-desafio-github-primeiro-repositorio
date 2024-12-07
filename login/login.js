@@ -22,9 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const userFound = users.find(user => user.email === username && user.senha === password);
 
         if (userFound) {
+            // Armazena o e-mail do usuário logado no localStorage
+            localStorage.setItem("loggedUser", userFound.email);
+
             // Redireciona para a página inicial após o login bem-sucedido
             alert(`Bem-vindo(a), ${userFound.email}!`);
-            window.location.href = "../inicial/inicial.html"; // Substitua pela página inicial desejada
+            window.location.href = "../inicial/inicial.html";
         } else {
             // Exibe mensagem de erro caso o login falhe
             if (!registra) {

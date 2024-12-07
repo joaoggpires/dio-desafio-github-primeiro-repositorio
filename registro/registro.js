@@ -1,7 +1,7 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const registerForm = document.querySelector("form");
 
-    registerForm.addEventListener("submit", function(event) {
+    registerForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
         const username = document.getElementById("email").value;
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (emailExists) {
                 mensagemregistro.textContent = "E-mail já cadastrado. Tente fazer login ou use outro e-mail.";
-                return; 
+                return;
             }
 
             // Novo usuário com informações adicionais
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 saldo: 0, // Saldo inicial
                 transacoes: [], // Lista de transações
                 metasCriadas: [], // Lista inicial de metas
-                categoriasPersonalizadas: [] // Lista inicial de categorias
+                despesas: [], // Lista inicial de categorias
             };
 
             users.push(newUser);
@@ -63,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
             alert("Cadastro realizado com sucesso!");
             window.location.href = "../login/login.html";
-
             registerForm.reset();
         } else {
             mensagemregistro.textContent = "As senhas não coincidem.";

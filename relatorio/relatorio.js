@@ -1,61 +1,56 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const ctx = document.getElementById('gastosChart').getContext('2d');
+    // Função para obter as transações do localStorage
+    function getTransacoes() {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        // Substitua pelo e-mail do usuário logado
+        const emailUsuarioLogado = "joaogab930@gmail.com"; 
+        const usuario = users.find(user => user.email === emailUsuarioLogado);
+        return usuario ? usuario.transacoes : [];
+    }
 
-    // Dados do gráfico
-    const data = {
-        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-        datasets: [{
-            label: 'Gastos em R$',
-            data: [1200, 900, 750, 800, 950, 1100,7,8,9,10,11,12],
-            backgroundColor: [
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-            ],
-            borderColor: [
-                'rgba(75, 192, 192, 1)',
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-            ],
-            borderWidth: 1
-        }]
-    };
+    // Função para processar os dados
+    function agruparPorMes(transacoes) {
+        const meses = Array.from({ length: 12 }, () => 0); // Array para somar valores por mês
+        transacoes.forEach(transacao => {
+            // Corrigir o formato da data para ser interpretado pelo JavaScript
+            const [dia, mes, ano] = transacao.data.split("/").map(Number);
+            const data = new Date(ano, mes - 1, dia); // Ajusta o mês (0 = janeiro)
+            const mesIndex = data.getMonth(); // Obtém o índice do mês
+            meses[mesIndex] += parseFloat(transacao.valor);
+        });
+        return meses;
+    }
 
-    // Configuração do gráfico
-    const config = {
-        type: 'bar',
-        data: data,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Valor em Reais (R$)',
-                    }
-                },
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Meses',
+    // Configurar e renderizar o gráfico
+    function criarGrafico(dados) {
+        const ctx = document.getElementById("graficoTransacoes").getContext("2d");
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: [
+                    "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", 
+                    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+                ],
+                datasets: [{
+                    label: "Transações por Mês (R$)",
+                    data: dados,
+                    backgroundColor: "rgba(75, 192, 192, 0.2)",
+                    borderColor: "rgba(75, 192, 192, 1)",
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
                     }
                 }
-            },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top',
-                },
             }
-        }
-    };
+        });
+    }
 
-    // Renderiza o gráfico
-    new Chart(ctx, config);
+    // Carregar transações e exibir gráfico
+    const transacoes = getTransacoes();
+    const dadosAgrupados = agruparPorMes(transacoes);
+    criarGrafico(dadosAgrupados);
 });

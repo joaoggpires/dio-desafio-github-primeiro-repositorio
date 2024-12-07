@@ -15,8 +15,8 @@
 
     <main>
         <div class="balance-info">
-            <p>Saldo Atual: <span id="currentBalance" class="positive">R$ 2.567,91</span></p>
-            <p>Despesas: <span id="expenses" class="negative">R$ -1.230,31</span></p>
+            <p>Saldo Atual: <span id="currentBalance" class="positive">R$ </span></p>
+            <p>Despesas: <span id="expenses" class="negative">R$ </span></p>
         </div>
 
         <div class="buttons">
@@ -24,7 +24,7 @@
                 <i class="bi bi-wallet-fill"></i>
                 <span>Adicionar/subtrair</span>
             </button>
-            <button class="action-button" id="despesaBtn">
+            <button class="action-button" id="despesasBtn">
                 <i class="bi bi-cash-stack"></i>
                 <span>Despesas</span>
             </button>
@@ -36,6 +36,15 @@
                 <i class="bi bi-graph-up-arrow"></i>
                 <span>Relatório</span>
             </button>
+            <button class="action-button" id="currencyConverterBtn">
+                <i class="bi bi-currency-exchange"></i>
+                <span>Conversor de Moeda</span>
+            </button>
+            <!-- Novo botão -->
+            <button class="action-button" id="setLimitBtn">
+                <i class="bi bi-credit-card"></i>
+                <span>Definir Limite de Pagamento</span>
+            </button>
         </div>
 
         <!-- Modal para Adicionar/Subtrair -->
@@ -45,7 +54,7 @@
                 <h2>Adicionar ou Subtrair</h2>
                 <form id="transactionForm">
                     <label for="amount">Valor:</label>
-                    <input type="number" id="amount" required>
+                    <input type="decimal" id="amount"step="0.01" required>
                     <label for="transactionType">Tipo:</label>
                     <select id="transactionType">
                         <option value="add">Adicionar (Receita)</option>
@@ -55,19 +64,43 @@
                 </form>
             </div>
         </div>
-        <div id="metasModal" class="modal" style="display: none;"> <!-- Modal começa oculto -->
+
+        <!-- Modal para Conversor de Moeda -->
+        <div id="currencyConverterModal" class="modal" style="display: none;">
             <div class="modal-content">
-                <span class="close" id="closeMetasModal">&times;</span>
-                <h2>Criar Meta Financeira</h2>
-                <form id="formMeta">
-                    <label for="metaNome">Nome da Meta</label>
-                    <input type="text" id="metaNome" required>
-                    <label for="metaValor">Valor da Meta</label>
-                    <input type="number" id="metaValor" required>
-                    <button type="submit">Criar Meta</button>
+                <span id="closeCurrencyConverterModal" class="close">&times;</span>
+                <h2>Conversor de Moedas</h2>
+                <form id="currencyConverterForm">
+                    <label for="amountToConvert">Valor em real (BRL):</label>
+                    <input type="number" id="amountToConvert" required>
+                    <label for="currencyType">Moeda:</label>
+                    <select id="currencyType">
+                        <option value="USD">Dólar Americano (USD)</option>
+                        <option value="EUR">Euro (EUR)</option>
+                        <option value="GBP">Libra Esterlina (GBP)</option>
+                        <option value='ARS'>Peso argentino (ARS)</option>
+                        <option value='BTC'>Bitcoin (BTC)</option>
+                    </select>
+                    <button type="submit">Converter</button>
+                </form>
+                <p id="conversionResult"></p>
+                <p id="atualizacao"></p>
+            </div>
+        </div>
+
+        <!-- Modal para Definir Limite de Pagamento -->
+        <div id="setLimitModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span id="closeLimitModal" class="close">&times;</span>
+                <h2>Definir Limite de Pagamento</h2>
+                <form id="setLimitForm">
+                    <label for="paymentLimit">Limite de pagamento:</label>
+                    <input type="number" id="paymentLimit" required>
+                    <button type="submit">Definir Limite</button>
                 </form>
             </div>
         </div>
+
     </main>
 
     <footer>
@@ -75,5 +108,7 @@
     </footer>
 
     <script src="inicialJS.js"></script>
+    <script src="app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 </html>

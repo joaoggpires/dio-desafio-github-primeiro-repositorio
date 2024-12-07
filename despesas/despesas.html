@@ -13,19 +13,43 @@
     </header>
     
     <main>
-        <div class="expense-card">
-            <p><strong>Despesas Variáveis:</strong> R$ 1.375,00 - R$ 2.150,00</p>
+        <div class="expense-card" id="variaveis">
+            <p><strong>Despesas Variáveis:</strong></p>
         </div>
 
-        <div class="expense-card">
-            <p><strong>Despesas Fixas:</strong> R$ 1.494,70</p>
+        <div class="expense-card" id="fixas">
+            <p><strong>Despesas Fixas:</strong></p>
         </div>
 
         <div class="expense-card" id="adicionar-despesa">
-            <p><strong>Adicionar nova despesa</strong></p>
+            <button id="abrir-modal">Adicionar nova despesa</button>
         </div>
     </main>
     
+    <!-- Modal para adicionar nova despesa -->
+    <div id="modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+            <h2>Adicionar Despesa</h2>
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" placeholder="Descrição da despesa">
+            
+            <label for="valor">Valor:</label>
+            <input type="number" id="valor" placeholder="Valor da despesa" step="0.01">
+            
+            <label for="tipo">Tipo:</label>
+            <select id="tipo">
+                <option value="fixas">Fixas</option>
+                <option value="variaveis">Variáveis</option>
+            </select>
+            
+            <label for="categoria">Categoria:</label>
+            <input type="text" id="categoria" placeholder="Ex: Alimentação, Transporte">
+            
+            <button id="salvar-despesa">Salvar Despesa</button>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2024 MyFinance: Todos os direitos reservados</p>
         <nav>
